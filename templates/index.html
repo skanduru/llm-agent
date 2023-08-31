@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+  <title>Movielens</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('staticfiles', path='movie.png') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('staticfiles', path='main.css') }}" />
+</head>
+
+<body>
+  <img src="{{ url_for('staticfiles', path='movie.png') }}" class="icon" />
+  <h3>Recommend the top movies based on genre</h3>
+  <form action="/generate" method="post">
+    <input type="text" name="number" placeholder="Specify top-'n' movies you want to see" required />
+    <input type="text" name="userInput" placeholder="" required />
+    <input type="submit" value="Find  Movies" />
+  </form>
+  {% if result %}
+  <div class="result">
+    {{ result | safe }}
+  </div>
+  {% endif %}
+</body>
